@@ -181,7 +181,10 @@ def main():
         keyword = unicode(' '.join(args.word), encoding=sys.getfilesystemencoding())
     else:
         word = Word.get_last_word()
-        keyword = word.keyword
+        if word:
+            keyword = word.keyword
+        else:
+            keyword = 'hello'
 
     if args.delete:
         del_word(keyword)
